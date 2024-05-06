@@ -1,5 +1,6 @@
 package com.unicaes.edu.Practica01API.Model.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,4 +37,7 @@ public class Usuario implements Serializable {
   @Column(name = "fecha_registro")
   private Date fecha_registro;
 
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "rol_id")
+  private Rol rol;
 }

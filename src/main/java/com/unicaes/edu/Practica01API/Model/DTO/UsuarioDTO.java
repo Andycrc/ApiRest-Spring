@@ -17,5 +17,7 @@ public class UsuarioDTO implements Serializable {
   private Integer edad;
   private String email;
   private Date fecha_registro;
+  private RolDTO rol;
+
 
 }

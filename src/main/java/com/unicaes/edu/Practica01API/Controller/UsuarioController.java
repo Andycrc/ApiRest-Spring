@@ -1,5 +1,6 @@
 package com.unicaes.edu.Practica01API.Controller;
 
+import com.unicaes.edu.Practica01API.Model.DTO.RolDTO;
 import com.unicaes.edu.Practica01API.Model.DTO.UsuarioDTO;
 import com.unicaes.edu.Practica01API.Model.Entity.Usuario;
 import com.unicaes.edu.Practica01API.Model.PayLoad.MensajeResponse;
@@ -134,6 +135,13 @@ public class UsuarioController {
     }
 
     private UsuarioDTO mapUsuarioToDTO(Usuario usuario) {
+        RolDTO rolDTO = null;
+        if (usuario.getRol() != null) {
+            rolDTO = RolDTO.builder()
+                    .id(usuario.getRol().getId())
+                    .nombre(usuario.getRol().getNombre())
+                    .build();
+        }
         return UsuarioDTO.builder()
                 .id(usuario.getId())
                 .nombre(usuario.getNombre())
@@ -141,6 +149,7 @@ public class UsuarioController {
                 .edad(usuario.getEdad())
                 .email(usuario.getEmail())
                 .fecha_registro(usuario.getFecha_registro())
+                .rol(rolDTO)
                 .build();
     }
 }
